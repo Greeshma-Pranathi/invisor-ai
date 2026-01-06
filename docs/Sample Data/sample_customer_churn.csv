@@ -1,0 +1,6 @@
+customer_id,gender,senior_citizen,partner,dependents,tenure_months,contract_type,payment_method,monthly_charges,total_charges,internet_service,online_security,tech_support,paperless_billing,churn
+C001,Female,0,Yes,No,12,Month-to-month,Electronic check,70.5,846.0,Fiber optic,No,No,Yes,1
+C002,Male,0,No,No,3,Month-to-month,Mailed check,89.1,267.3,Fiber optic,No,No,Yes,1
+C003,Female,0,Yes,Yes,48,One year,Credit card,55.2,2649.6,DSL,Yes,Yes,No,0
+C004,Male,1,No,No,6,Month-to-month,Electronic check,95.0,570.0,Fiber optic,No,No,Yes,1
+C005,Female,0,Yes,Yes,72,Two year,Bank transfer,45.0,3240.0,DSL,Yes,Yes,No,0
