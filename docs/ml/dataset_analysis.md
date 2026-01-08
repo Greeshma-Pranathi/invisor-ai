@@ -9,3 +9,39 @@ Dataset Expansion Notes
 - Dataset is synthetic and expanded for demo purposes
 - Columns added to improve churn signal and explainability
 - No real customer data used
+
+### Numeric Features
+- senior_citizen
+- tenure_months
+- monthly_charges
+- total_charges
+- avg_monthly_usage_gb
+- support_tickets_last_6m
+- late_payments_last_year
+
+All numeric features are valid behavioral or demographic indicators.
+
+### Categorical Features
+- gender
+- partner
+- dependents
+- contract_type
+- payment_method
+- internet_service
+- online_security
+- tech_support
+- paperless_billing
+- streaming_tv
+- streaming_movies
+- multiple_lines
+- autopay_enabled
+- billing_cycle
+- region
+
+### Excluded Columns
+- customer_id (identifier, not predictive)
+
+### Missing Values Analysis
+- No missing values detected in the current dataset
+- Dataset is synthetically generated
+- Missing value handling will still be implemented in preprocessing pipeline for robustness
