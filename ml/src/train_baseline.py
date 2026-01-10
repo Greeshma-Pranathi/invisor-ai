@@ -6,7 +6,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
-from preprocessing import build_preprocessing_pipeline
+from ml.src.preprocessing_baseline import build_preprocessing_pipeline
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -63,3 +63,5 @@ model.fit(X_train, y_train)
 joblib.dump(model, MODEL_PATH)
 
 print(f"Baseline churn model saved to: {MODEL_PATH}")
+
+

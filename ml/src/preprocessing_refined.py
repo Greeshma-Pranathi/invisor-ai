@@ -1,8 +1,13 @@
+import numpy as np
+from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+# -------------------------
+# Feature Lists
+# -------------------------
 NUMERIC_FEATURES = [
     "senior_citizen",
     "tenure_months",
@@ -10,7 +15,11 @@ NUMERIC_FEATURES = [
     "total_charges",
     "avg_monthly_usage_gb",
     "support_tickets_last_6m",
-    "late_payments_last_year"
+    "late_payments_last_year",
+    # engineered features
+    "charges_per_month",
+    "tickets_per_month",
+    "usage_per_charge"
 ]
 
 CATEGORICAL_FEATURES = [
@@ -31,7 +40,27 @@ CATEGORICAL_FEATURES = [
     "region"
 ]
 
+# -------------------------
+# Feature Engineering Step
+# -------------------------
+class InteractionFeatureGenerator(BaseEstimator, TransformerMixin):
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        X = X.copy()
+
+        X["charges_per_month"] = X["total_charges"] / X["tenure_months"].replace(0, np.nan)
+        X["tickets_per_month"] = X["support_tickets_last_6m"] / X["tenure_months"].replace(0, np.nan)
+        X["usage_per_charge"] = X["avg_monthly_usage_gb"] / X["monthly_charges"].replace(0, np.nan)
+
+        return X
+
+# -------------------------
+# Build Preprocessing Pipeline
+# -------------------------
 def build_preprocessing_pipeline():
+
     numeric_pipeline = Pipeline(steps=[
         ("imputer", SimpleImputer(strategy="median")),
         ("scaler", StandardScaler())
@@ -42,9 +71,14 @@ def build_preprocessing_pipeline():
         ("encoder", OneHotEncoder(handle_unknown="ignore"))
     ])
 
-    return ColumnTransformer(
+    column_transformer = ColumnTransformer(
         transformers=[
             ("num", numeric_pipeline, NUMERIC_FEATURES),
             ("cat", categorical_pipeline, CATEGORICAL_FEATURES)
         ]
     )
+
+    return Pipeline(steps=[
+        ("feature_engineering", InteractionFeatureGenerator()),
+        ("preprocessor", column_transformer)
+    ])
