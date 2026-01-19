@@ -1,0 +1,101 @@
+customer_id,age,gender,location,tenure,monthly_charges,total_charges,balance,num_products,engagement_score,contract_type
+CUST2000,49,Female,Urban,65,66.02,4291.3,289.73,2,0.58,One year
+CUST2001,18,Female,Suburban,61,111.53,6803.33,1557.21,3,0.72,Two year
+CUST2002,44,Female,Urban,47,63.65,2991.55,104.63,3,0.96,Month-to-month
+CUST2003,50,Male,Urban,22,36.28,798.16,1548.83,3,0.83,Two year
+CUST2004,42,Female,Suburban,45,81.32,3659.4,4835.73,4,0.51,One year
+CUST2005,50,Male,Urban,7,82.65,578.55,1211.54,1,0.14,One year
+CUST2006,38,Female,Rural,27,110.5,2983.5,2160.39,1,0.99,One year
+CUST2007,63,Female,Suburban,61,107.6,6563.6,889.68,5,0.86,Two year
+CUST2008,21,Female,Urban,59,73.06,4310.54,1266.24,3,0.38,Two year
+CUST2009,61,Female,Rural,69,112.56,7766.64,1051.85,5,0.28,One year
+CUST2010,70,Male,Urban,30,56.57,1697.1,4677.91,5,0.0,Two year
+CUST2011,19,Female,Suburban,71,36.02,2557.42,1941.72,4,0.43,One year
+CUST2012,26,Male,Rural,47,33.69,1583.43,1764.68,1,0.32,Month-to-month
+CUST2013,65,Female,Rural,14,71.56,1001.84,2018.85,5,0.74,Two year
+CUST2014,58,Female,Urban,32,72.47,2319.04,1926.13,5,0.62,Month-to-month
+CUST2015,21,Male,Rural,43,84.4,3629.2,2485.35,4,0.39,One year
+CUST2016,24,Male,Rural,55,86.4,4752.0,3365.34,4,0.8,Two year
+CUST2017,55,Female,Urban,38,87.93,3341.34,424.72,3,0.1,One year
+CUST2018,37,Female,Suburban,29,114.13,3309.77,847.2,3,0.65,Month-to-month
+CUST2019,60,Male,Rural,57,63.72,3632.04,2017.48,3,0.78,Two year
+CUST2020,26,Male,Suburban,37,41.06,1519.22,3518.01,4,0.08,Month-to-month
+CUST2021,68,Male,Suburban,47,32.45,1525.15,2274.89,2,0.51,Two year
+CUST2022,28,Female,Rural,29,55.29,1603.41,2762.99,4,0.22,Month-to-month
+CUST2023,35,Female,Rural,21,55.13,1157.73,4946.89,2,0.75,Two year
+CUST2024,38,Male,Suburban,59,58.78,3468.02,2568.06,3,0.65,One year
+CUST2025,29,Female,Urban,2,77.08,154.16,1911.6,4,0.99,One year
+CUST2026,57,Female,Rural,37,51.86,1918.82,2451.81,5,0.39,Two year
+CUST2027,44,Male,Suburban,20,79.15,1583.0,4557.74,3,0.67,Two year
+CUST2028,34,Female,Rural,38,53.4,2029.2,2822.82,4,0.22,One year
+CUST2029,27,Male,Urban,13,64.99,844.87,605.01,2,0.26,One year
+CUST2030,38,Male,Rural,42,60.54,2542.68,2352.98,2,0.06,Month-to-month
+CUST2031,40,Male,Suburban,5,54.06,270.3,1177.34,2,0.08,One year
+CUST2032,30,Female,Urban,4,118.41,473.64,94.9,5,0.73,Month-to-month
+CUST2033,67,Male,Suburban,5,96.61,483.05,4279.52,4,0.77,Two year
+CUST2034,44,Male,Rural,55,101.2,5566.0,338.23,3,0.12,Two year
+CUST2035,65,Female,Urban,3,98.92,296.76,4291.59,2,0.94,Month-to-month
+CUST2036,19,Male,Rural,69,77.85,5371.65,1136.95,2,0.27,Month-to-month
+CUST2037,34,Male,Suburban,48,75.71,3634.08,1524.49,4,0.9,One year
+CUST2038,21,Female,Suburban,31,106.98,3316.38,1450.27,2,0.63,Two year
+CUST2039,34,Female,Suburban,34,78.03,2653.02,4250.13,4,0.19,Month-to-month
+CUST2040,39,Female,Rural,6,66.37,398.22,3010.68,3,0.57,One year
+CUST2041,21,Male,Rural,60,118.58,7114.8,1603.82,5,0.09,Two year
+CUST2042,50,Female,Urban,17,119.4,2029.8,753.9,4,0.85,Two year
+CUST2043,56,Female,Suburban,4,80.17,320.68,1670.34,4,0.56,Two year
+CUST2044,38,Female,Rural,69,28.55,1969.95,263.99,2,0.11,Two year
+CUST2045,28,Female,Urban,59,59.14,3489.26,2170.07,5,0.27,Two year
+CUST2046,18,Female,Suburban,47,88.94,4180.18,1014.82,3,0.91,Two year
+CUST2047,21,Male,Suburban,41,84.22,3453.02,3915.73,4,0.93,Two year
+CUST2048,40,Female,Urban,54,87.52,4726.08,3138.89,1,0.63,Two year
+CUST2049,51,Female,Rural,28,20.62,577.36,1686.08,1,0.09,Month-to-month
+CUST2050,22,Female,Suburban,24,43.78,1050.72,4954.89,5,0.9,Two year
+CUST2051,51,Female,Urban,46,89.92,4136.32,3284.03,4,0.6,Month-to-month
+CUST2052,67,Female,Urban,62,99.28,6155.36,3288.68,2,0.83,Two year
+CUST2053,62,Male,Urban,31,29.17,904.27,2155.65,4,0.35,Two year
+CUST2054,66,Male,Urban,11,28.74,316.14,4834.1,4,0.51,One year
+CUST2055,63,Female,Suburban,28,35.08,982.24,2356.48,5,0.71,One year
+CUST2056,51,Male,Suburban,58,25.92,1503.36,4470.46,4,0.58,Two year
+CUST2057,65,Male,Rural,55,74.31,4087.05,4846.2,2,0.6,One year
+CUST2058,30,Male,Rural,66,116.01,7656.66,4028.14,3,0.74,Two year
+CUST2059,35,Male,Urban,67,103.04,6903.68,385.4,2,1.0,Two year
+CUST2060,39,Female,Rural,68,92.65,6300.2,273.85,4,0.25,One year
+CUST2061,52,Male,Urban,40,68.73,2749.2,2626.31,3,0.87,Two year
+CUST2062,18,Male,Rural,15,89.4,1341.0,425.75,2,0.61,One year
+CUST2063,45,Male,Rural,71,85.06,6039.26,2255.05,1,0.91,Two year
+CUST2064,46,Male,Rural,5,82.57,412.85,1327.54,1,0.89,One year
+CUST2065,29,Male,Suburban,40,69.11,2764.4,1676.83,1,0.36,One year
+CUST2066,27,Female,Rural,37,119.7,4428.9,52.61,3,0.65,Month-to-month
+CUST2067,43,Female,Rural,4,109.82,439.28,4670.89,3,0.57,Two year
+CUST2068,67,Male,Urban,34,56.18,1910.12,2663.37,3,0.65,Month-to-month
+CUST2069,29,Male,Suburban,3,112.07,336.21,4514.01,2,0.08,One year
+CUST2070,33,Male,Suburban,27,117.03,3159.81,3216.36,3,0.05,Two year
+CUST2071,21,Female,Rural,14,24.38,341.32,26.72,2,0.65,Two year
+CUST2072,20,Male,Urban,68,25.9,1761.2,1555.31,4,0.61,One year
+CUST2073,54,Female,Urban,50,87.79,4389.5,1625.82,4,0.96,Month-to-month
+CUST2074,39,Male,Rural,26,94.03,2444.78,813.74,3,0.76,Two year
+CUST2075,68,Male,Suburban,58,76.84,4456.72,3288.45,2,0.41,Month-to-month
+CUST2076,24,Male,Rural,32,62.42,1997.44,4139.04,1,0.06,One year
+CUST2077,53,Female,Urban,64,31.57,2020.48,4788.17,5,0.66,Two year
+CUST2078,52,Female,Rural,20,119.12,2382.4,4493.64,1,0.42,Two year
+CUST2079,41,Female,Suburban,61,59.63,3637.43,2251.45,2,0.98,Two year
+CUST2080,51,Male,Urban,40,34.77,1390.8,2357.73,3,0.92,Two year
+CUST2081,25,Male,Rural,11,49.49,544.39,832.8,5,0.86,Month-to-month
+CUST2082,43,Male,Suburban,28,26.74,748.72,1983.29,3,0.22,One year
+CUST2083,49,Male,Rural,68,68.5,4658.0,601.71,3,0.06,Two year
+CUST2084,31,Female,Urban,1,24.12,24.12,2646.99,1,0.27,Two year
+CUST2085,23,Female,Urban,38,32.93,1251.34,2734.29,1,0.2,One year
+CUST2086,47,Female,Urban,52,53.52,2783.04,4215.3,2,0.74,Two year
+CUST2087,30,Male,Urban,13,63.23,821.99,4554.7,4,0.37,One year
+CUST2088,64,Female,Urban,43,109.9,4725.7,1175.09,5,0.05,Two year
+CUST2089,59,Male,Urban,26,56.2,1461.2,373.4,2,0.16,Two year
+CUST2090,37,Female,Rural,6,99.91,599.46,105.99,1,0.35,Two year
+CUST2091,36,Male,Urban,63,87.82,5532.66,1922.54,3,0.22,One year
+CUST2092,40,Female,Urban,38,44.3,1683.4,1760.7,5,0.84,One year
+CUST2093,54,Female,Rural,23,58.94,1355.62,4681.77,4,0.62,One year
+CUST2094,18,Female,Rural,24,81.07,1945.68,257.88,2,0.69,Two year
+CUST2095,66,Male,Suburban,17,101.55,1726.35,3343.61,3,0.88,Two year
+CUST2096,55,Female,Suburban,36,71.95,2590.2,2499.61,2,0.57,Two year
+CUST2097,53,Female,Suburban,8,70.19,561.52,2632.74,4,0.78,Month-to-month
+CUST2098,19,Female,Urban,7,63.53,444.71,2548.74,2,0.17,One year
+CUST2099,57,Male,Urban,70,25.52,1786.4,3805.7,2,0.87,Two year
