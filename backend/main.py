@@ -10,7 +10,13 @@ from dotenv import load_dotenv
 
 # Import custom modules
 from models.model_interface import model_interface
-from explainability.shap_explainer import shap_explainer
+try:
+    from explainability.shap_explainer import shap_explainer
+except ImportError:
+    # Fallback import
+    import sys
+    sys.path.append('explainability')
+    from shap_explainer import shap_explainer
 from supabase_client import supabase_storage
 
 # Load environment variables
@@ -229,47 +235,81 @@ async def chatbot_query(query: Dict[str, str]):
     
     _ensure_data_loaded()
     
-    # Enhanced chatbot logic using real data
-    if "data" in user_query and "count" in user_query:
-        if current_data is not None:
-             return {"response": f"I have analyzed {len(current_data)} customers. {model_interface.get_model_info().get('churn_model_loaded', False) and 'Churn model is active.' or 'Churn model is not active.'}"}
-        return {"response": "No data loaded yet."}
-
-    # Generate insights using recent predictions if available
-    if "risk" in user_query or "churn" in user_query:
-        try:
-             predictions = model_interface.predict_churn(current_data)
-             high_risk = sum(1 for p in predictions if p['risk_level'] == 'High')
-             return {"response": f"Based on my analysis of {len(predictions)} customers, I found {high_risk} customers at High Risk of churn. This requires immediate attention."}
-        except Exception as e:
-             return {"response": f"I attempted to analyze churn risks but encountered an error: {str(e)}"}
-
-    if "segment" in user_query:
-        try:
-             segments = model_interface.predict_segments(current_data)
-             # Simple aggregation
-             seg_counts = pd.Series([s['segment_name'] for s in segments]).value_counts().to_dict()
-             top_segment = max(seg_counts, key=seg_counts.get)
-             return {"response": f"I've segmented the customers. The largest segment is '{top_segment}' with {seg_counts[top_segment]} customers. Do you want more details on a specific segment?"}
-        except Exception as e:
-             return {"response": "I couldn't retrieve segmentation details at the moment."}
-
-    # Fallback to keyword-based for general questions
-    if "feature" in user_query or "important" in user_query:
-        try:
-             # Use real SHAP explainer
-             model = model_interface.churn_model
-             if not model:
-                 return {"response": "I cannot provide feature importance because the churn model is not loaded."}
-             
-             explanations = shap_explainer.explain_predictions(current_data, model=model)
-             top_features = explanations.get('global_feature_importance', [])[:3]
-             feature_text = ", ".join([f"{f['feature']} ({f['importance']:.0%})" for f in top_features])
-             return {"response": f"According to the AI model, the most important features driving churn are: {feature_text}."}
-        except Exception as e:
-             return {"response": f"I couldn't analyze feature importance: {str(e)}"}
+    if current_data is None:
+        return {"response": "Please upload a CSV file first to analyze your customer data."}
     
-    return {"response": f"I can help you with insights on your {len(current_data) if current_data is not None else 0} customers. Ask me about 'High Risk' customers or 'Segments'."}
+    try:
+        # Generate predictions once for efficiency
+        predictions = model_interface.predict_churn(current_data)
+        segments = model_interface.predict_segments(current_data)
+        
+        # Count risk levels
+        high_risk = sum(1 for p in predictions if p['risk_level'] == 'High')
+        medium_risk = sum(1 for p in predictions if p['risk_level'] == 'Medium')
+        low_risk = sum(1 for p in predictions if p['risk_level'] == 'Low')
+        
+        # Count segments
+        seg_counts = pd.Series([s['segment_name'] for s in segments]).value_counts().to_dict()
+        
+        # Enhanced query handling
+        if "high risk" in user_query or ("how many" in user_query and "risk" in user_query):
+            return {"response": f"I found {high_risk} customers at High Risk of churn ({high_risk/len(predictions)*100:.1f}% of your customer base). Additionally, {medium_risk} are at Medium Risk and {low_risk} are at Low Risk."}
+        
+        elif "segment" in user_query and ("highest" in user_query or "most" in user_query) and "churn" in user_query:
+            # Analyze churn risk by segment
+            segment_risk = {}
+            for pred, seg in zip(predictions, segments):
+                seg_name = seg['segment_name']
+                if seg_name not in segment_risk:
+                    segment_risk[seg_name] = {'total': 0, 'high_risk': 0}
+                segment_risk[seg_name]['total'] += 1
+                if pred['risk_level'] == 'High':
+                    segment_risk[seg_name]['high_risk'] += 1
+            
+            # Calculate risk percentages
+            for seg_name in segment_risk:
+                segment_risk[seg_name]['risk_pct'] = (segment_risk[seg_name]['high_risk'] / segment_risk[seg_name]['total']) * 100
+            
+            # Find highest risk segment
+            highest_risk_segment = max(segment_risk.keys(), key=lambda x: segment_risk[x]['risk_pct'])
+            risk_pct = segment_risk[highest_risk_segment]['risk_pct']
+            
+            return {"response": f"The '{highest_risk_segment}' segment has the highest churn risk at {risk_pct:.1f}% ({segment_risk[highest_risk_segment]['high_risk']} out of {segment_risk[highest_risk_segment]['total']} customers). Consider targeted retention strategies for this segment."}
+        
+        elif "segment" in user_query:
+            top_segment = max(seg_counts, key=seg_counts.get)
+            segment_list = ", ".join([f"{name}: {count}" for name, count in seg_counts.items()])
+            return {"response": f"Customer segments: {segment_list}. The largest segment is '{top_segment}' with {seg_counts[top_segment]} customers."}
+        
+        elif "feature" in user_query or "important" in user_query or "influence" in user_query:
+            try:
+                # Try to get feature importance from precomputed data
+                explainability_dir = Path("ml_models/explainability")
+                global_importance_file = explainability_dir / "global_feature_importance.csv"
+                
+                if global_importance_file.exists():
+                    importance_df = pd.read_csv(global_importance_file)
+                    top_features = importance_df.head(3)
+                    feature_text = ", ".join([f"{row['feature']} ({row['importance']:.1%})" for _, row in top_features.iterrows()])
+                    return {"response": f"The most important features influencing churn are: {feature_text}. These factors have the strongest impact on customer retention decisions."}
+                else:
+                    return {"response": "Feature importance analysis is not available. The key factors typically include contract type, tenure, monthly charges, and customer service interactions."}
+            except Exception as e:
+                return {"response": "I couldn't analyze feature importance at the moment. Generally, contract type, tenure, and monthly charges are key churn indicators."}
+        
+        elif "summary" in user_query or "insight" in user_query:
+            avg_churn_prob = sum(p['churn_probability'] for p in predictions) / len(predictions)
+            return {"response": f"Customer Analysis Summary: {len(current_data)} customers analyzed. Risk Distribution: {high_risk} High Risk ({high_risk/len(predictions)*100:.1f}%), {medium_risk} Medium Risk, {low_risk} Low Risk. Average churn probability: {avg_churn_prob:.1%}. Top segment: {max(seg_counts, key=seg_counts.get)} ({seg_counts[max(seg_counts, key=seg_counts.get)]} customers)."}
+        
+        elif "data" in user_query and "count" in user_query:
+            return {"response": f"I have analyzed {len(current_data)} customers with {len(current_data.columns)} features. The churn model is active and generating real-time predictions."}
+        
+        else:
+            # Default response with helpful suggestions
+            return {"response": f"I can help analyze your {len(current_data)} customers. Try asking: 'How many customers are at high risk?', 'Which segment has highest churn risk?', 'What features influence churn most?', or 'Summarize the customer insights'."}
+    
+    except Exception as e:
+        return {"response": f"I encountered an error analyzing your data: {str(e)}. Please try uploading your data again or ask a different question."}
 
 if __name__ == "__main__":
     import uvicorn

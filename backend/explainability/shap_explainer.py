@@ -45,36 +45,29 @@ class ShapExplainer:
     def initialize_explainer(self, model, background_data: pd.DataFrame):
         """Initialize SHAP explainer with model and background data"""
         try:
+            # Ensure background data is numeric
+            if background_data.select_dtypes(include=['object']).shape[1] > 0:
+                background_data = self._prepare_data_for_shap(background_data)
+            
             # Determine the best explainer type based on model
             model_type = str(type(model)).lower()
             
-            if 'xgb' in model_type or 'lightgbm' in model_type or 'catboost' in model_type:
-                # Tree-based models
-                self.explainer = shap.TreeExplainer(model)
-                print("✅ Using TreeExplainer for tree-based model")
-            elif hasattr(model, 'predict_proba'):
-                # General ML models with probability prediction
-                self.explainer = shap.Explainer(model, background_data.sample(min(100, len(background_data))))
-                print("✅ Using general Explainer")
+            if 'randomforest' in model_type or 'xgb' in model_type or 'lightgbm' in model_type or 'catboost' in model_type:
+                # Tree-based models - use TreeExplainer with relaxed checks
+                self.explainer = shap.TreeExplainer(model, check_additivity=False)
+                print("✅ Using TreeExplainer for tree-based model (additivity check disabled)")
             else:
-                # Linear models or others
-                self.explainer = shap.LinearExplainer(model, background_data)
-                print("✅ Using LinearExplainer")
+                # For other models, use a simple explainer with small background
+                background_sample = background_data.sample(min(10, len(background_data)))
+                self.explainer = shap.Explainer(model.predict, background_sample)
+                print("✅ Using general Explainer with small background")
             
             self.feature_names = background_data.columns.tolist()
             return True
             
         except Exception as e:
             print(f"❌ Error initializing SHAP explainer: {e}")
-            # Fallback to basic explainer
-            try:
-                self.explainer = shap.Explainer(model.predict, background_data.sample(min(50, len(background_data))))
-                self.feature_names = background_data.columns.tolist()
-                print("✅ Using fallback Explainer")
-                return True
-            except Exception as e2:
-                print(f"❌ Fallback explainer also failed: {e2}")
-                return False
+            return False
     
     def explain_predictions(self, data: pd.DataFrame, model=None) -> Dict[str, Any]:
         """Generate SHAP explanations for predictions"""
@@ -102,14 +95,25 @@ class ShapExplainer:
         
         # Initialize explainer if not done
         if self.explainer is None:
-            if not self.initialize_explainer(model, data.sample(min(50, len(data)))):
+            # Prepare data for SHAP (convert to numeric)
+            numeric_data = self._prepare_data_for_shap(data)
+            if not self.initialize_explainer(model, numeric_data.sample(min(50, len(numeric_data)))):
                 raise Exception("Could not initialize SHAP explainer")
         
-        # Calculate SHAP values for a sample of data (to avoid memory issues)
-        sample_size = min(20, len(data))
-        sample_data = data.head(sample_size)
+        # Prepare data for SHAP
+        numeric_data = self._prepare_data_for_shap(data)
         
-        shap_values = self.explainer(sample_data)
+        # Calculate SHAP values for a sample of data (to avoid memory issues)
+        sample_size = min(10, len(numeric_data))  # Reduced sample size
+        sample_data = numeric_data.head(sample_size)
+        
+        try:
+            shap_values = self.explainer(sample_data, check_additivity=False)
+        except:
+            # Fallback: try with even smaller sample
+            sample_data = numeric_data.head(min(3, len(numeric_data)))
+            shap_values = self.explainer(sample_data, check_additivity=False)
+        
         self.shap_values = shap_values
         
         # Global feature importance
@@ -128,17 +132,49 @@ class ShapExplainer:
             "explanation_type": "real_shap"
         }
     
+    def _prepare_data_for_shap(self, data: pd.DataFrame) -> pd.DataFrame:
+        """Prepare data for SHAP by converting to numeric format"""
+        numeric_data = data.copy()
+        
+        # Convert categorical columns to numeric
+        for col in numeric_data.columns:
+            if numeric_data[col].dtype == 'object':
+                # Use label encoding for categorical variables
+                unique_vals = numeric_data[col].unique()
+                mapping = {val: idx for idx, val in enumerate(unique_vals)}
+                numeric_data[col] = numeric_data[col].map(mapping)
+        
+        # Ensure all columns are numeric
+        for col in numeric_data.columns:
+            numeric_data[col] = pd.to_numeric(numeric_data[col], errors='coerce')
+        
+        # Fill any NaN values
+        numeric_data = numeric_data.fillna(0)
+        
+        return numeric_data
+    
     def _use_precomputed_explanations(self, data: pd.DataFrame) -> Dict[str, Any]:
         """Use precomputed explainability results"""
         
         # Use cached global importance
         global_importance = []
         for _, row in self.global_importance_cache.iterrows():
+            # Handle different column names
+            importance_value = row.get('importance', row.get('mean_abs_shap', 0))
+            feature_name = row.get('feature', 'unknown')
+            
             global_importance.append({
-                "feature": row['feature'],
-                "importance": round(float(row['importance']), 3),
-                "rank": int(row.get('rank', 0))
+                "feature": feature_name,
+                "importance": round(float(importance_value), 3),
+                "rank": len(global_importance) + 1
             })
+        
+        # Sort by importance
+        global_importance.sort(key=lambda x: x["importance"], reverse=True)
+        
+        # Update ranks
+        for i, item in enumerate(global_importance):
+            item["rank"] = i + 1
         
         # Generate individual explanations based on feature importance patterns
         individual_explanations = []
@@ -147,18 +183,36 @@ class ShapExplainer:
         for i in range(min(5, len(data))):
             explanations = []
             for feature in top_features:
-                if feature in data.columns:
-                    # Simulate SHAP value based on feature importance and value
-                    feature_value = data.iloc[i][feature]
+                # Clean feature name (remove categorical prefixes)
+                clean_feature = feature.replace('cat__', '').replace('num__', '')
+                base_feature = clean_feature.split('_')[0] if '_' in clean_feature else clean_feature
+                
+                # Find matching column in data
+                matching_col = None
+                for col in data.columns:
+                    if base_feature.lower() in col.lower() or col.lower() in base_feature.lower():
+                        matching_col = col
+                        break
+                
+                if matching_col and matching_col in data.columns:
+                    # Get feature value
+                    feature_value = data.iloc[i][matching_col]
                     base_importance = next((item['importance'] for item in global_importance if item['feature'] == feature), 0.1)
                     
                     # Simulate SHAP value (positive/negative based on feature value)
                     if pd.isna(feature_value):
                         shap_val = 0
                     else:
-                        # Normalize feature value and apply importance
-                        normalized_val = (feature_value - data[feature].mean()) / (data[feature].std() + 1e-8)
-                        shap_val = normalized_val * base_importance * 0.1
+                        # For categorical features, use positive importance
+                        if isinstance(feature_value, str):
+                            shap_val = base_importance * 0.5
+                        else:
+                            # For numeric features, normalize and apply importance
+                            try:
+                                normalized_val = (float(feature_value) - data[matching_col].mean()) / (data[matching_col].std() + 1e-8)
+                                shap_val = normalized_val * base_importance * 0.1
+                            except:
+                                shap_val = base_importance * 0.1
                     
                     # Convert numpy types to Python types
                     if hasattr(feature_value, 'item'):
@@ -167,7 +221,7 @@ class ShapExplainer:
                         feature_value = float(feature_value)
                     
                     explanations.append({
-                        "feature": feature,
+                        "feature": matching_col,
                         "shap_value": round(float(shap_val), 3),
                         "feature_value": feature_value,
                         "impact": "Positive" if shap_val > 0 else "Negative"

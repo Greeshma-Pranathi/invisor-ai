@@ -8,7 +8,14 @@ import sys
 from pathlib import Path
 
 # Add ml_src to path for importing preprocessing modules
-sys.path.append(str(Path(__file__).parent.parent / "ml_src"))
+ml_src_path = str(Path(__file__).parent.parent / "ml_src")
+if ml_src_path not in sys.path:
+    sys.path.insert(0, ml_src_path)
+
+# Import custom model loader and data mapper
+sys.path.append(str(Path(__file__).parent.parent))
+from model_loader import load_model_safe
+from data_mapper import prepare_data_for_model
 
 try:
     from model_config import MODEL_PATHS, MODEL_METADATA, FEATURE_COLUMNS, NUMERIC_FEATURES, CATEGORICAL_FEATURES
@@ -54,41 +61,41 @@ class ModelInterface:
     
     def _auto_load_models(self):
         """Automatically load models if they exist"""
+        print(f"DEBUG: Current CWD: {os.getcwd()}", flush=True)
+        print(f"DEBUG: Model Paths: {MODEL_PATHS}", flush=True)
         try:
             if not CONFIG_AVAILABLE:
-                print("⚠️ Config not available, skipping auto-load")
+                print("DEBUG: CONFIG_AVAILABLE is False")
+                print("Config not available, skipping auto-load")
                 return
 
-            print("🔄 Auto-loading models from config...")
+            print("Auto-loading models from config...")
 
             # Load final churn model
             churn_model_path = MODEL_PATHS.get("churn_model")
             if churn_model_path and churn_model_path.exists():
                 self.load_churn_model(str(churn_model_path))
             else:
-                print(f"⚠️ Churn model not found at {churn_model_path}")
+                print(f"Churn model not found at {churn_model_path}")
             
             # Load segmentation model
             seg_model_path = MODEL_PATHS.get("segmentation_model")
             if seg_model_path and seg_model_path.exists():
                 self.load_segmentation_model(str(seg_model_path))
             else:
-                print(f"⚠️ Segmentation model not found at {seg_model_path}")
+                print(f"Segmentation model not found at {seg_model_path}")
             
             self.is_initialized = True
             
         except Exception as e:
-            print(f"⚠️ Auto-load failed: {e}")
+            print(f"Auto-load failed: {e}")
             self.is_initialized = False
     
     def load_churn_model(self, model_path: str) -> bool:
         """Load the churn prediction model"""
         try:
-            if model_path.endswith('.pkl'):
-                with open(model_path, 'rb') as f:
-                    self.churn_model = pickle.load(f)
-            elif model_path.endswith('.joblib'):
-                self.churn_model = joblib.load(model_path)
+            # Use safe model loader
+            self.churn_model = load_model_safe(model_path)
             
             print(f"✅ Churn model loaded from {model_path}")
             
@@ -108,11 +115,8 @@ class ModelInterface:
     def load_segmentation_model(self, model_path: str) -> bool:
         """Load the customer segmentation model"""
         try:
-            if model_path.endswith('.pkl'):
-                with open(model_path, 'rb') as f:
-                    self.segmentation_model = pickle.load(f)
-            elif model_path.endswith('.joblib'):
-                self.segmentation_model = joblib.load(model_path)
+            # Use safe model loader
+            self.segmentation_model = load_model_safe(model_path)
             
             print(f"✅ Segmentation model loaded from {model_path}")
             
@@ -202,16 +206,30 @@ class ModelInterface:
             raise ValueError("Churn model is not loaded. Cannot generate predictions.")
         
         try:
-            # Preprocess data using ML pipeline
-            processed_data = self.preprocess_data_for_churn(data)
+            # Prepare data for model (handle column mapping and missing columns)
+            prepared_data = prepare_data_for_model(data, 'churn')
+            
+            # Handle model structure (dict with 'model' and 'preprocessor' keys)
+            if isinstance(self.churn_model, dict):
+                model = self.churn_model['model']
+                preprocessor = self.churn_model.get('preprocessor')
+            else:
+                model = self.churn_model
+                preprocessor = self.churn_preprocessor
+            
+            # Use the model's preprocessor if available
+            if preprocessor is not None:
+                processed_data = preprocessor.transform(prepared_data)
+            else:
+                # Fallback to basic preprocessing
+                processed_data = self._basic_preprocessing(prepared_data)
             
             # Get predictions and probabilities
-            # Some models expect dataframe, others numpy array. Pipeline outputs array.
-            predictions = self.churn_model.predict(processed_data)
+            predictions = model.predict(processed_data)
             
             # Handle both binary and probability predictions
-            if hasattr(self.churn_model, 'predict_proba'):
-                probabilities = self.churn_model.predict_proba(processed_data)
+            if hasattr(model, 'predict_proba'):
+                probabilities = model.predict_proba(processed_data)
                 # Check shape to handle binary vs multi-class (though churn is binary)
                 if len(probabilities.shape) > 1 and probabilities.shape[1] > 1:
                     probabilities = probabilities[:, 1]  # Probability of churn (class 1)
@@ -235,7 +253,7 @@ class ModelInterface:
                 if "customer_id" in data.columns:
                     customer_id = data.iloc[idx]["customer_id"]
                 else:
-                    customer_id = idx
+                    customer_id = f"Customer_{idx}"
 
                 results.append({
                     "customer_id": customer_id,
@@ -259,11 +277,26 @@ class ModelInterface:
             raise ValueError("Segmentation model is not loaded. Cannot generate segments.")
         
         try:
-            # Preprocess data using ML pipeline
-            processed_data = self.preprocess_data_for_segmentation(data)
+            # Prepare data for segmentation model
+            prepared_data = prepare_data_for_model(data, 'segmentation')
+            
+            # Handle model structure (dict with 'model' and 'preprocessor' keys)
+            if isinstance(self.segmentation_model, dict):
+                model = self.segmentation_model['model']
+                preprocessor = self.segmentation_model.get('preprocessor')
+            else:
+                model = self.segmentation_model
+                preprocessor = self.segmentation_preprocessor
+            
+            # Use the model's preprocessor if available
+            if preprocessor is not None:
+                processed_data = preprocessor.transform(prepared_data)
+            else:
+                # Fallback to basic preprocessing
+                processed_data = self._basic_preprocessing(prepared_data)
             
             # Get cluster assignments
-            segments = self.segmentation_model.predict(processed_data)
+            segments = model.predict(processed_data)
             
             results = []
             for idx, segment_id in enumerate(segments):
@@ -271,10 +304,10 @@ class ModelInterface:
                 
                 # Calculate confidence based on distance to cluster center (if available)
                 confidence = 0.85  # Default confidence
-                if hasattr(self.segmentation_model, 'transform'):
+                if hasattr(model, 'transform'):
                     try:
                         # Some clusterers (like KMeans) support transform to get distances
-                        distances = self.segmentation_model.transform(processed_data[idx:idx+1])
+                        distances = model.transform(processed_data[idx:idx+1])
                         min_distance = np.min(distances)
                         confidence = max(0.6, 1.0 - (min_distance / 10))  # Normalize distance to confidence
                     except:
@@ -283,13 +316,13 @@ class ModelInterface:
                 if "customer_id" in data.columns:
                     customer_id = data.iloc[idx]["customer_id"]
                 else:
-                    customer_id = idx
+                    customer_id = f"Customer_{idx}"
 
                 results.append({
                     "customer_id": customer_id,
                     "segment_id": segment_id,
                     "segment_name": SEGMENT_NAMES.get(segment_id, f"Segment {segment_id}"),
-                    "confidence": round(confidence, 3)
+                    "confidence": round(float(confidence), 3)
                 })
             
             print(f"✅ Generated {len(results)} segments using real model")

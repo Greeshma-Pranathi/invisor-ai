@@ -16,13 +16,13 @@ churn_path = os.path.join(model_dir, "final_churn_model.pkl")
 
 print(f"\nAttempting to load: {churn_path}")
 if not os.path.exists(churn_path):
-    print("❌ File not found!")
+    print("ERROR: File not found!")
 else:
     try:
         model = joblib.load(churn_path)
-        print("✅ Success! Model loaded.")
+        print("SUCCESS: Model loaded.")
         print(f"Type: {type(model)}")
     except Exception as e:
-        print(f"❌ Failed to load model: {e}")
+        print(f"ERROR: Failed to load model: {e}")
         import traceback
         traceback.print_exc()
