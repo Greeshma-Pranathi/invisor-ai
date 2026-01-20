@@ -1,20 +1,28 @@
 fastapi==0.104.1
 uvicorn==0.24.0
 python-multipart==0.0.6
-pandas>=2.2.0
-numpy>=2.0.0
-scikit-learn>=1.5.0
-shap>=0.45.0
-supabase==2.0.2
 python-dotenv==1.0.0
 pydantic==2.5.0
-matplotlib==3.7.2
-# ML Model Dependencies
+supabase==2.0.2
+
+# Core ML Dependencies (Matched to Training Env Python 3.13)
+numpy==2.3.5
+pandas==2.3.3
+scikit-learn==1.8.0
+shap==0.50.0
+scipy==1.16.3
+matplotlib==3.10.8
+joblib==1.5.3
+cloudpickle==3.1.2
+
+# Other dependencies from training env that might be relevant
+pillow==12.1.0
+tqdm==4.67.1
+typing_extensions==4.15.0
+
+# Legacy/Optional (Keep loose or remove if unused, but keeping for safety as not in training list but might be used by code)
 xgboost>=1.7.0
 lightgbm>=3.3.0
 catboost>=1.2.0
 seaborn>=0.12.0
 plotly>=5.15.0
-joblib>=1.3.0
-
-# ML Model Dependencies
