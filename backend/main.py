@@ -17,6 +17,11 @@ from ml.chatbot.chatbot_logic import chatbot_response
 
 from fastapi.middleware.cors import CORSMiddleware
 
+from fastapi import HTTPException
+import shap
+import numpy as np
+import pandas as pd
+
 # -------------------------
 # Load models once at startup
 # -------------------------
@@ -115,26 +120,57 @@ def predict_segments_api():
         "data": segments_df.to_dict(orient="records")
     }
 
-# Load global explainability output (precomputed)
-GLOBAL_EXPLAIN_PATH = "ml_models/explainability/global_feature_importance.csv"
-
-try:
-    GLOBAL_EXPLAIN_DF = pd.read_csv(GLOBAL_EXPLAIN_PATH)
-except FileNotFoundError:
-    GLOBAL_EXPLAIN_DF = None
-
 @app.get("/explain/global")
 def global_explain_api():
-    if GLOBAL_EXPLAIN_DF is None:
+    # 1. Ensure CSV is uploaded
+    if CACHE["dataframe"] is None:
         raise HTTPException(
-            status_code=500,
-            detail="Global explainability not available"
+            status_code=400,
+            detail="Upload CSV before requesting explainability"
         )
+
+    df = CACHE["dataframe"]
+
+    # 2. Prepare features
+    X = df.drop(columns=["customer_id", "churn"], errors="ignore")
+
+    # 3. Extract pipeline components
+    preprocessing = CHURN_MODEL.named_steps["preprocessing"]
+    classifier = CHURN_MODEL.named_steps["classifier"]
+
+    # 4. Transform data
+    X_processed = preprocessing.transform(X)
+
+    column_transformer = preprocessing.named_steps["preprocessor"]
+    feature_names = column_transformer.get_feature_names_out()
+
+    # 5. SHAP
+    explainer = shap.TreeExplainer(classifier)
+    shap_values = explainer.shap_values(X_processed)
+
+    # Binary classifier safety
+    if isinstance(shap_values, list):
+        shap_values = shap_values[1]
+
+    if shap_values.ndim == 3:
+        shap_values = shap_values[:, :, 1]
+
+    # 6. Aggregate global importance
+    mean_abs_shap = np.abs(shap_values).mean(axis=0)
+
+    global_df = (
+        pd.DataFrame({
+            "feature": feature_names,
+            "mean_abs_shap": mean_abs_shap
+        })
+        .sort_values("mean_abs_shap", ascending=False)
+        .reset_index(drop=True)
+    )
 
     return {
         "status": "success",
         "message": "Global churn drivers retrieved",
-        "data": GLOBAL_EXPLAIN_DF.to_dict(orient="records")
+        "data": global_df.to_dict(orient="records")
     }
 
 @app.get("/explain/customer/{customer_id}")
