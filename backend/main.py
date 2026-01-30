@@ -28,6 +28,40 @@ import pandas as pd
 CHURN_MODEL = load_churn_model()
 SEGMENT_MODEL = load_segmentation_model()
 
+def compute_global_explainability(df, model_pipeline):
+    import shap
+    import numpy as np
+    import pandas as pd
+
+    X = df.drop(columns=["customer_id", "churn"], errors="ignore")
+
+    preprocessing = model_pipeline.named_steps["preprocessing"]
+    classifier = model_pipeline.named_steps["classifier"]
+
+    X_processed = preprocessing.transform(X)
+    column_transformer = preprocessing.named_steps["preprocessor"]
+    feature_names = column_transformer.get_feature_names_out()
+
+    explainer = shap.TreeExplainer(classifier)
+    shap_values = explainer.shap_values(X_processed)
+
+    if isinstance(shap_values, list):
+        shap_values = shap_values[1]
+
+    if shap_values.ndim == 3:
+        shap_values = shap_values[:, :, 1]
+
+    mean_abs_shap = np.abs(shap_values).mean(axis=0)
+
+    return (
+        pd.DataFrame({
+            "feature": feature_names,
+            "mean_abs_shap": mean_abs_shap
+        })
+        .sort_values("mean_abs_shap", ascending=False)
+        .reset_index(drop=True)
+    )
+
 # -------------------------
 # App
 # -------------------------
@@ -252,14 +286,17 @@ def chat_api(request: ChatRequest):
             .round(2)
             .to_dict()
         )
-
+        global_explain_df = compute_global_explainability(
+        df=CACHE["dataframe"],
+        model_pipeline=CHURN_MODEL
+        )
         cached_outputs = {
             "churn": churn_df,
-            "global_explain": GLOBAL_EXPLAIN_DF,
-            "local_explain": None,  # computed only when needed
+            "global_explain": global_explain_df,  # ✅ FIXED
+            "local_explain": None,
             "segment_counts": segment_counts,
             "segment_churn": segment_churn,
-            "segment_descriptions": {},  # optional later
+            "segment_descriptions": {},
             "dataset_summary": f"{len(churn_df)} customers analyzed"
         }
 
