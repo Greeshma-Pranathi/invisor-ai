@@ -205,3 +205,20 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ----------------------
+# Invisor.ai – ML artifacts
+# ----------------------
+
+# Ignore generated ML outputs
+backend/ml_models/explainability/
+backend/ml_models/*.csv
+backend/ml_models/*.png
+
+# Ignore all model binaries by default
+backend/ml_models/*.pkl
+backend/ml_models/*.joblib
+
+# Explicitly keep runtime models
+!backend/ml_models/final_churn_model.pkl
+!backend/ml_models/segmentation_model.pkl

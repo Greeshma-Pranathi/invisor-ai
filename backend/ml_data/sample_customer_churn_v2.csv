@@ -1,0 +1,201 @@
+customer_id,gender,senior_citizen,partner,dependents,tenure_months,contract_type,payment_method,monthly_charges,total_charges,internet_service,online_security,tech_support,paperless_billing,streaming_tv,streaming_movies,multiple_lines,avg_monthly_usage_gb,support_tickets_last_6m,late_payments_last_year,autopay_enabled,billing_cycle,region,churn
+C006,Male,0,Yes,No,24,One year,Credit card,70.34,1688.16,Fiber optic,Yes,,Yes,Yes,Yes,Yes,144.69,2,0,Yes,Monthly,North,0
+C002,Male,0,No,No,1,Month-to-month,Mailed check,92.24,92.24,Fiber optic,,No,Yes,No,Yes,Yes,192.62,5,2,No,Monthly,North,1
+C001,Female,0,Yes,No,17,Month-to-month,Electronic check,73.94,1256.98,Fiber optic,No,No,Yes,Yes,Yes,No,146.43,1,0,No,Monthly,South,1
+C006,Male,0,Yes,No,25,One year,Credit card,45.38,1134.5,Fiber optic,Yes,,Yes,Yes,Yes,Yes,201.24,2,1,Yes,Monthly,North,0
+C012,Male,0,Yes,Yes,84,Two year,Bank transfer,41.5,3486.0,DSL,Yes,Yes,No,Yes,Yes,Yes,26.23,0,1,Yes,Quarterly,East,0
+C012,Male,0,Yes,Yes,90,Two year,Bank transfer,45.7,4113.0,DSL,Yes,Yes,No,Yes,Yes,Yes,23.74,0,0,Yes,Quarterly,East,0
+C005,Female,0,Yes,Yes,74,Two year,Bank transfer,40.19,2974.06,DSL,Yes,Yes,No,Yes,Yes,Yes,51.75,1,1,Yes,Quarterly,West,0
+C003,Female,0,Yes,Yes,49,One year,Credit card,51.72,2534.28,DSL,Yes,,No,Yes,No,Yes,80.72,0,1,Yes,Quarterly,East,0
+C012,Male,0,Yes,Yes,80,Two year,Bank transfer,46.44,3715.2,DSL,Yes,Yes,No,Yes,Yes,Yes,55.65,2,0,Yes,Quarterly,East,0
+C014,Male,1,No,No,1,Month-to-month,Mailed check,79.76,79.76,Fiber optic,No,No,Yes,No,Yes,No,267.38,6,3,No,Monthly,North,1
+C006,Male,0,Yes,No,18,One year,Credit card,71.98,1295.64,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,144.07,0,0,Yes,Monthly,North,0
+C006,Male,0,Yes,No,22,One year,Credit card,61.83,1360.26,Fiber optic,Yes,,Yes,Yes,Yes,Yes,186.52,1,0,Yes,Monthly,North,0
+C001,Female,0,Yes,No,12,Month-to-month,Electronic check,71.52,858.24,Fiber optic,No,No,Yes,Yes,Yes,No,102.72,4,0,No,Monthly,South,0
+C010,Male,0,Yes,Yes,41,One year,Credit card,43.53,1784.73,DSL,,Yes,No,Yes,No,Yes,78.6,0,0,Yes,Monthly,North,0
+C008,Male,0,Yes,Yes,55,Two year,Bank transfer,58.27,3204.85,DSL,Yes,Yes,No,Yes,Yes,Yes,17.64,0,1,Yes,Quarterly,South,0
+C011,Female,0,No,No,6,Month-to-month,Electronic check,109.08,654.48,Fiber optic,No,No,Yes,No,Yes,No,329.7,4,6,No,Monthly,South,0
+C006,Male,0,Yes,No,23,One year,Credit card,49.47,1137.81,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,193.48,3,0,Yes,Monthly,North,0
+C005,Female,0,Yes,Yes,69,Two year,Bank transfer,55.81,3850.89,DSL,Yes,,No,Yes,Yes,Yes,74.42,0,1,Yes,Quarterly,West,0
+C006,Male,0,Yes,No,29,One year,Credit card,58.4,1693.6,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,186.84,2,0,Yes,Monthly,North,0
+C015,Female,0,Yes,Yes,92,Two year,Bank transfer,31.32,2881.44,DSL,Yes,Yes,No,Yes,Yes,Yes,102.67,1,0,Yes,Quarterly,South,0
+C010,Male,0,Yes,Yes,35,One year,Credit card,58.25,2038.75,DSL,Yes,,No,Yes,No,Yes,56.03,3,0,Yes,Monthly,North,0
+C004,Male,1,No,No,8,Month-to-month,Electronic check,86.52,692.16,Fiber optic,No,No,Yes,No,Yes,No,274.63,2,2,No,Monthly,South,1
+C015,Female,0,Yes,Yes,97,Two year,Bank transfer,45.73,4435.81,DSL,Yes,Yes,No,Yes,Yes,Yes,88.68,0,1,Yes,Quarterly,South,0
+C015,Female,0,Yes,Yes,97,Two year,Bank transfer,45.73,4435.81,DSL,Yes,Yes,No,Yes,Yes,Yes,88.68,0,1,Yes,Quarterly,South,0
+C015,Female,0,Yes,Yes,92,Two year,Bank transfer,27.85,,DSL,Yes,Yes,No,Yes,Yes,Yes,83.61,0,0,Yes,Quarterly,South,0
+C008,Male,0,Yes,Yes,64,Two year,Bank transfer,45.36,2903.04,DSL,Yes,Yes,No,Yes,Yes,Yes,126.83,0,0,Yes,Quarterly,South,0
+C010,Male,0,Yes,Yes,37,One year,Credit card,64.9,2401.3,DSL,Yes,Yes,No,Yes,No,Yes,91.86,1,1,Yes,Monthly,North,0
+C012,Male,0,Yes,Yes,81,Two year,Bank transfer,41.67,3375.27,DSL,Yes,Yes,No,Yes,Yes,Yes,41.23,0,1,Yes,Quarterly,East,0
+C003,Female,0,Yes,Yes,54,One year,Credit card,62.55,3377.7,DSL,Yes,Yes,No,Yes,No,Yes,81.29,0,1,Yes,Quarterly,East,0
+C013,Female,0,Yes,No,17,One year,Credit card,55.85,949.45,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,170.13,2,1,Yes,Monthly,West,0
+C009,Female,1,No,No,7,Month-to-month,Mailed check,93.06,651.42,Fiber optic,No,,Yes,No,No,No,237.09,4,1,No,Monthly,West,1
+C014,Male,1,No,No,6,Month-to-month,Mailed check,92.48,,Fiber optic,No,No,Yes,No,Yes,No,299.8,4,4,No,Monthly,North,1
+C013,Female,0,Yes,No,19,One year,Credit card,56.44,1072.36,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,152.99,1,0,Yes,Monthly,West,0
+C012,Male,0,Yes,Yes,90,Two year,Bank transfer,45.7,4113.0,DSL,Yes,Yes,No,Yes,Yes,Yes,23.74,0,0,Yes,Quarterly,East,0
+C010,Male,0,Yes,Yes,30,One year,Credit card,79.05,2371.5,DSL,Yes,Yes,No,Yes,No,Yes,107.97,0,0,Yes,Monthly,North,0
+C015,Female,0,Yes,Yes,95,Two year,Bank transfer,39.21,3724.95,DSL,Yes,Yes,No,Yes,Yes,Yes,72.31,2,1,Yes,Quarterly,South,0
+C008,Male,0,Yes,Yes,58,Two year,Bank transfer,34.99,2029.42,DSL,Yes,Yes,No,Yes,Yes,Yes,98.7,0,0,Yes,Quarterly,South,0
+C010,Male,0,Yes,Yes,33,One year,Credit card,61.37,2025.21,DSL,Yes,Yes,No,Yes,No,Yes,94.62,3,0,Yes,Monthly,North,0
+C015,Female,0,Yes,Yes,94,Two year,Bank transfer,45.76,4301.44,DSL,Yes,Yes,No,Yes,Yes,Yes,18.28,2,0,Yes,Quarterly,South,0
+C006,Male,0,Yes,No,23,One year,Credit card,49.47,1137.81,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,193.48,3,0,Yes,Monthly,North,0
+C009,Female,1,No,No,12,Month-to-month,Mailed check,70.76,849.12,Fiber optic,No,No,Yes,No,No,No,181.21,3,1,No,Monthly,West,0
+C012,Male,0,Yes,Yes,80,Two year,Bank transfer,46.44,3715.2,DSL,Yes,Yes,No,Yes,Yes,Yes,55.65,2,0,Yes,Quarterly,East,0
+C004,Male,1,No,No,2,Month-to-month,Electronic check,108.65,217.3,Fiber optic,No,No,Yes,No,Yes,No,275.81,4,2,No,Monthly,South,1
+C011,Female,0,No,No,1,Month-to-month,Electronic check,107.62,107.62,Fiber optic,No,No,Yes,No,Yes,No,273.51,8,6,No,Monthly,South,1
+C003,Female,0,Yes,Yes,48,One year,Credit card,58.02,2784.96,DSL,Yes,Yes,No,Yes,No,Yes,93.98,2,1,Yes,Quarterly,East,0
+C012,Male,0,Yes,Yes,85,Two year,Bank transfer,55.96,4756.6,DSL,Yes,Yes,No,Yes,Yes,Yes,10.0,0,0,Yes,Quarterly,East,0
+C011,Female,0,No,No,1,Month-to-month,Electronic check,107.45,107.45,Fiber optic,No,,Yes,No,Yes,No,274.1,6,5,No,Monthly,South,1
+C002,Male,0,No,No,1,Month-to-month,Mailed check,92.24,92.24,Fiber optic,,No,Yes,No,Yes,Yes,192.62,5,2,No,Monthly,North,1
+C005,Female,0,Yes,Yes,72,Two year,Bank transfer,50.23,3616.56,DSL,Yes,,No,Yes,Yes,Yes,58.83,1,0,Yes,Quarterly,West,0
+C012,Male,0,Yes,Yes,88,Two year,Bank transfer,55.84,4913.92,DSL,Yes,Yes,No,Yes,Yes,Yes,85.49,0,0,Yes,Quarterly,East,0
+C012,Male,0,Yes,Yes,88,Two year,Bank transfer,55.84,4913.92,DSL,Yes,Yes,No,Yes,Yes,Yes,85.49,0,0,Yes,Quarterly,East,0
+C015,Female,0,Yes,Yes,99,Two year,Bank transfer,37.58,3720.42,DSL,Yes,Yes,No,Yes,Yes,Yes,24.25,0,0,Yes,Quarterly,South,0
+C014,Male,1,No,No,9,Month-to-month,Mailed check,95.01,,Fiber optic,No,,Yes,No,Yes,No,237.35,3,4,No,Monthly,North,1
+C008,Male,0,Yes,Yes,61,Two year,Bank transfer,53.59,3268.99,DSL,Yes,Yes,No,Yes,Yes,Yes,90.18,2,0,Yes,Quarterly,South,0
+C012,Male,0,Yes,Yes,79,Two year,Bank transfer,46.6,3681.4,DSL,Yes,Yes,No,Yes,Yes,Yes,102.6,2,1,Yes,Quarterly,East,0
+C005,Female,0,Yes,Yes,74,Two year,Bank transfer,40.19,2974.06,DSL,Yes,Yes,No,Yes,Yes,Yes,51.75,1,1,Yes,Quarterly,West,0
+C010,Male,0,Yes,Yes,30,One year,Credit card,53.11,,DSL,Yes,Yes,No,Yes,No,Yes,58.88,2,0,Yes,Monthly,North,0
+C012,Male,0,Yes,Yes,89,Two year,Bank transfer,48.26,,DSL,Yes,Yes,No,Yes,Yes,Yes,113.6,0,1,Yes,Quarterly,East,0
+C003,Female,0,Yes,Yes,48,One year,Credit card,58.02,2784.96,DSL,Yes,Yes,No,Yes,No,Yes,93.98,2,1,Yes,Quarterly,East,0
+C005,Female,0,Yes,Yes,72,Two year,Bank transfer,47.05,3387.6,DSL,Yes,Yes,No,Yes,Yes,Yes,59.9,0,1,Yes,Quarterly,West,0
+C003,Female,0,Yes,Yes,47,One year,Credit card,56.73,2666.31,DSL,Yes,,No,Yes,No,Yes,63.16,1,0,Yes,Quarterly,East,0
+C006,Male,0,Yes,No,18,One year,Credit card,71.98,1295.64,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,144.07,0,0,Yes,Monthly,North,0
+C009,Female,1,No,No,13,Month-to-month,Mailed check,84.02,1092.26,Fiber optic,No,No,Yes,No,No,No,225.2,3,1,No,Monthly,West,1
+C004,Male,1,No,No,2,Month-to-month,Electronic check,96.14,192.28,Fiber optic,No,,Yes,No,Yes,No,259.26,2,4,No,Monthly,South,1
+C004,Male,1,No,No,3,Month-to-month,Electronic check,105.65,316.95,Fiber optic,No,No,Yes,No,Yes,No,289.95,5,4,No,Monthly,South,1
+C003,Female,0,Yes,Yes,49,One year,Credit card,55.64,2726.36,DSL,Yes,Yes,No,Yes,No,Yes,165.17,2,0,Yes,Quarterly,East,0
+C011,Female,0,No,No,1,Month-to-month,Electronic check,106.52,106.52,Fiber optic,No,No,Yes,No,Yes,No,356.63,4,4,No,Monthly,South,1
+C015,Female,0,Yes,Yes,97,Two year,Bank transfer,45.73,4435.81,DSL,Yes,Yes,No,Yes,Yes,Yes,88.68,0,1,Yes,Quarterly,South,0
+C015,Female,0,Yes,Yes,97,Two year,Bank transfer,45.73,4435.81,DSL,Yes,Yes,No,Yes,Yes,Yes,88.68,0,1,Yes,Quarterly,South,0
+C012,Male,0,Yes,Yes,79,Two year,Bank transfer,46.6,3681.4,DSL,Yes,Yes,No,Yes,Yes,Yes,102.6,2,1,Yes,Quarterly,East,0
+C013,Female,0,Yes,No,24,One year,Credit card,89.46,2147.04,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,131.79,0,0,Yes,Monthly,West,0
+C005,Female,0,Yes,Yes,74,Two year,Bank transfer,40.19,2974.06,DSL,Yes,Yes,No,Yes,Yes,Yes,51.75,1,1,Yes,Quarterly,West,0
+C006,Male,0,Yes,No,21,One year,Credit card,65.21,1369.41,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,164.04,2,1,Yes,Monthly,North,0
+C004,Male,1,No,No,6,Month-to-month,Electronic check,104.48,626.88,Fiber optic,No,No,Yes,No,Yes,No,240.2,2,3,No,Monthly,South,1
+C015,Female,0,Yes,Yes,99,Two year,Bank transfer,37.58,3720.42,DSL,Yes,Yes,No,Yes,Yes,Yes,24.25,0,0,Yes,Quarterly,South,0
+C008,Male,0,Yes,Yes,56,Two year,Bank transfer,48.4,2710.4,DSL,Yes,Yes,No,Yes,Yes,Yes,47.61,2,0,Yes,Quarterly,South,0
+C002,Male,0,No,No,1,Month-to-month,Mailed check,95.08,95.08,Fiber optic,No,No,Yes,No,Yes,Yes,238.81,1,3,No,Monthly,North,1
+C015,Female,0,Yes,Yes,97,Two year,Bank transfer,45.73,4435.81,DSL,Yes,Yes,No,Yes,Yes,Yes,88.68,0,1,Yes,Quarterly,South,0
+C013,Female,0,Yes,No,16,One year,Credit card,64.62,1033.92,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,120.15,1,0,Yes,Monthly,West,0
+C015,Female,0,Yes,Yes,92,Two year,Bank transfer,31.32,2881.44,DSL,Yes,Yes,No,Yes,Yes,Yes,102.67,1,0,Yes,Quarterly,South,0
+C004,Male,1,No,No,3,Month-to-month,Electronic check,105.65,316.95,Fiber optic,No,No,Yes,No,Yes,No,289.95,5,4,No,Monthly,South,1
+C008,Male,0,Yes,Yes,55,Two year,Bank transfer,58.27,3204.85,DSL,Yes,Yes,No,Yes,Yes,Yes,17.64,0,1,Yes,Quarterly,South,0
+C014,Male,1,No,No,9,Month-to-month,Mailed check,95.01,,Fiber optic,No,,Yes,No,Yes,No,237.35,3,4,No,Monthly,North,1
+C005,Female,0,Yes,Yes,72,Two year,Bank transfer,50.23,3616.56,DSL,Yes,,No,Yes,Yes,Yes,58.83,1,0,Yes,Quarterly,West,0
+C015,Female,0,Yes,Yes,92,Two year,Bank transfer,35.96,3308.32,DSL,,Yes,No,Yes,Yes,Yes,32.83,0,1,Yes,Quarterly,South,0
+C008,Male,0,Yes,Yes,65,Two year,Bank transfer,42.52,2763.8,DSL,Yes,Yes,No,Yes,Yes,Yes,89.56,1,0,Yes,Quarterly,South,0
+C013,Female,0,Yes,No,16,One year,Credit card,74.13,1186.08,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,126.27,2,0,Yes,Monthly,West,0
+C007,Female,0,No,No,1,Month-to-month,Electronic check,96.54,,Fiber optic,,No,Yes,No,Yes,No,291.65,4,4,No,Monthly,East,1
+C003,Female,0,Yes,Yes,47,One year,Credit card,56.73,2666.31,DSL,Yes,,No,Yes,No,Yes,63.16,1,0,Yes,Quarterly,East,0
+C008,Male,0,Yes,Yes,64,Two year,Bank transfer,45.36,2903.04,DSL,Yes,Yes,No,Yes,Yes,Yes,126.83,0,0,Yes,Quarterly,South,0
+C014,Male,1,No,No,9,Month-to-month,Mailed check,95.01,,Fiber optic,No,,Yes,No,Yes,No,237.35,3,4,No,Monthly,North,1
+C010,Male,0,Yes,Yes,35,One year,Credit card,65.13,2279.55,DSL,Yes,Yes,No,Yes,No,Yes,149.26,0,1,Yes,Monthly,North,0
+C006,Male,0,Yes,No,23,One year,Credit card,49.47,1137.81,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,193.48,3,0,Yes,Monthly,North,0
+C002,Male,0,No,No,1,Month-to-month,Mailed check,88.78,88.78,Fiber optic,No,No,Yes,No,Yes,Yes,240.95,4,3,No,Monthly,North,1
+C004,Male,1,No,No,5,Month-to-month,Electronic check,90.28,451.4,Fiber optic,No,No,Yes,No,Yes,No,251.35,5,2,No,Monthly,South,1
+C003,Female,0,Yes,Yes,54,One year,Credit card,62.55,3377.7,DSL,Yes,Yes,No,Yes,No,Yes,81.29,0,1,Yes,Quarterly,East,0
+C012,Male,0,Yes,Yes,82,Two year,Bank transfer,43.26,3547.32,DSL,Yes,Yes,No,Yes,Yes,Yes,84.71,0,0,Yes,Quarterly,East,0
+C007,Female,0,No,No,3,Month-to-month,Electronic check,96.68,290.04,Fiber optic,No,No,Yes,No,Yes,No,308.47,3,4,No,Monthly,East,1
+C007,Female,0,No,No,1,Month-to-month,Electronic check,107.61,107.61,Fiber optic,No,No,Yes,No,Yes,No,366.42,4,3,No,Monthly,East,1
+C012,Male,0,Yes,Yes,80,Two year,Bank transfer,46.44,3715.2,DSL,Yes,Yes,No,Yes,Yes,Yes,55.65,2,0,Yes,Quarterly,East,0
+C004,Male,1,No,No,7,Month-to-month,Electronic check,106.58,746.06,Fiber optic,No,No,Yes,No,Yes,No,266.2,2,2,No,Monthly,South,1
+C014,Male,1,No,No,5,Month-to-month,Mailed check,87.23,436.15,Fiber optic,No,No,Yes,No,Yes,No,198.39,6,2,No,Monthly,North,1
+C015,Female,0,Yes,Yes,102,Two year,Bank transfer,43.89,4476.78,DSL,Yes,Yes,No,Yes,Yes,Yes,120.51,0,0,Yes,Quarterly,South,0
+C003,Female,0,Yes,Yes,53,One year,Credit card,53.86,2854.58,DSL,Yes,Yes,No,Yes,No,Yes,94.4,0,0,Yes,Quarterly,East,0
+C001,Female,0,Yes,No,12,Month-to-month,Electronic check,71.52,858.24,Fiber optic,No,No,Yes,Yes,Yes,No,102.72,4,0,No,Monthly,South,0
+C012,Male,0,Yes,Yes,80,Two year,Bank transfer,49.28,3942.4,DSL,Yes,Yes,No,Yes,Yes,Yes,112.1,1,1,Yes,Quarterly,East,0
+C004,Male,1,No,No,8,Month-to-month,Electronic check,86.52,692.16,Fiber optic,No,No,Yes,No,Yes,No,274.63,2,2,No,Monthly,South,1
+C003,Female,0,Yes,Yes,47,One year,Credit card,56.73,2666.31,DSL,Yes,,No,Yes,No,Yes,63.16,1,0,Yes,Quarterly,East,0
+C005,Female,0,Yes,Yes,74,Two year,Bank transfer,40.19,2974.06,DSL,Yes,Yes,No,Yes,Yes,Yes,51.75,1,1,Yes,Quarterly,West,0
+C013,Female,0,Yes,No,18,One year,Credit card,71.9,1294.2,Fiber optic,,No,Yes,Yes,Yes,Yes,142.28,2,0,Yes,Monthly,West,0
+C003,Female,0,Yes,Yes,47,One year,Credit card,56.73,2666.31,DSL,Yes,,No,Yes,No,Yes,63.16,1,0,Yes,Quarterly,East,0
+C014,Male,1,No,No,1,Month-to-month,Mailed check,104.23,104.23,Fiber optic,No,No,Yes,No,Yes,No,240.06,5,2,No,Monthly,North,1
+C006,Male,0,Yes,No,21,One year,Credit card,65.21,1369.41,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,164.04,2,1,Yes,Monthly,North,0
+C015,Female,0,Yes,Yes,92,Two year,Bank transfer,31.32,2881.44,DSL,Yes,Yes,No,Yes,Yes,Yes,102.67,1,0,Yes,Quarterly,South,0
+C003,Female,0,Yes,Yes,47,One year,Credit card,56.73,2666.31,DSL,Yes,,No,Yes,No,Yes,63.16,1,0,Yes,Quarterly,East,0
+C013,Female,0,Yes,No,17,One year,Credit card,57.43,976.31,Fiber optic,,No,Yes,Yes,Yes,Yes,159.25,0,0,Yes,Monthly,West,0
+C003,Female,0,Yes,Yes,54,One year,Credit card,62.55,3377.7,DSL,Yes,Yes,No,Yes,No,Yes,81.29,0,1,Yes,Quarterly,East,0
+C011,Female,0,No,No,1,Month-to-month,Electronic check,105.96,105.96,Fiber optic,No,No,Yes,No,Yes,No,321.23,4,4,No,Monthly,South,1
+C006,Male,0,Yes,No,23,One year,Credit card,71.84,1652.32,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,144.13,0,1,Yes,Monthly,North,0
+C008,Male,0,Yes,Yes,58,Two year,Bank transfer,60.98,3536.84,DSL,Yes,Yes,No,Yes,Yes,Yes,49.69,0,0,Yes,Quarterly,South,1
+C011,Female,0,No,No,1,Month-to-month,Electronic check,105.96,105.96,Fiber optic,No,No,Yes,No,Yes,No,321.23,4,4,No,Monthly,South,1
+C010,Male,0,Yes,Yes,35,One year,Credit card,65.13,2279.55,DSL,Yes,Yes,No,Yes,No,Yes,149.26,0,1,Yes,Monthly,North,0
+C005,Female,0,Yes,Yes,69,Two year,Bank transfer,60.3,4160.7,DSL,Yes,Yes,No,Yes,Yes,Yes,92.46,2,0,Yes,Quarterly,West,0
+C006,Male,0,Yes,No,23,One year,Credit card,71.84,1652.32,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,144.13,0,1,Yes,Monthly,North,0
+C014,Male,1,No,No,1,Month-to-month,Mailed check,99.39,99.39,Fiber optic,No,No,Yes,No,Yes,No,222.77,2,2,No,Monthly,North,1
+C003,Female,0,Yes,Yes,47,One year,Credit card,57.27,2691.69,DSL,,Yes,No,Yes,No,Yes,126.98,0,0,Yes,Quarterly,East,1
+C006,Male,0,Yes,No,28,One year,Credit card,71.15,1992.2,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,152.16,1,1,Yes,Monthly,North,0
+C015,Female,0,Yes,Yes,99,Two year,Bank transfer,55.81,5525.19,DSL,Yes,Yes,No,Yes,Yes,Yes,32.4,0,0,Yes,Quarterly,South,0
+C006,Male,0,Yes,No,23,One year,Credit card,71.84,1652.32,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,144.13,0,1,Yes,Monthly,North,0
+C007,Female,0,No,No,1,Month-to-month,Electronic check,96.54,,Fiber optic,,No,Yes,No,Yes,No,291.65,4,4,No,Monthly,East,1
+C015,Female,0,Yes,Yes,99,Two year,Bank transfer,37.58,3720.42,DSL,Yes,Yes,No,Yes,Yes,Yes,24.25,0,0,Yes,Quarterly,South,0
+C004,Male,1,No,No,8,Month-to-month,Electronic check,100.59,804.72,Fiber optic,No,No,Yes,No,Yes,No,272.1,3,3,No,Monthly,South,1
+C012,Male,0,Yes,Yes,84,Two year,Bank transfer,37.28,3131.52,DSL,Yes,Yes,No,Yes,Yes,Yes,59.68,0,1,Yes,Quarterly,East,0
+C015,Female,0,Yes,Yes,92,Two year,Bank transfer,27.85,,DSL,Yes,Yes,No,Yes,Yes,Yes,83.61,0,0,Yes,Quarterly,South,0
+C004,Male,1,No,No,2,Month-to-month,Electronic check,96.14,192.28,Fiber optic,No,,Yes,No,Yes,No,259.26,2,4,No,Monthly,South,1
+C007,Female,0,No,No,3,Month-to-month,Electronic check,95.43,286.29,Fiber optic,No,No,Yes,No,Yes,No,311.42,7,5,No,Monthly,East,0
+C002,Male,0,No,No,1,Month-to-month,Mailed check,85.33,85.33,Fiber optic,No,No,Yes,No,Yes,Yes,252.75,2,2,No,Monthly,North,1
+C008,Male,0,Yes,Yes,61,Two year,Bank transfer,53.59,3268.99,DSL,Yes,Yes,No,Yes,Yes,Yes,90.18,2,0,Yes,Quarterly,South,0
+C012,Male,0,Yes,Yes,80,Two year,Bank transfer,49.28,3942.4,DSL,Yes,Yes,No,Yes,Yes,Yes,112.1,1,1,Yes,Quarterly,East,0
+C003,Female,0,Yes,Yes,49,One year,Credit card,51.72,2534.28,DSL,Yes,,No,Yes,No,Yes,80.72,0,1,Yes,Quarterly,East,0
+C010,Male,0,Yes,Yes,35,One year,Credit card,50.15,1755.25,DSL,Yes,Yes,No,Yes,No,Yes,120.56,1,1,Yes,Monthly,North,0
+C015,Female,0,Yes,Yes,96,Two year,Bank transfer,42.58,,DSL,Yes,Yes,No,Yes,Yes,Yes,80.16,1,0,Yes,Quarterly,South,0
+C010,Male,0,Yes,Yes,33,One year,Credit card,61.37,2025.21,DSL,Yes,Yes,No,Yes,No,Yes,94.62,3,0,Yes,Monthly,North,0
+C009,Female,1,No,No,12,Month-to-month,Mailed check,81.8,981.6,Fiber optic,No,No,Yes,No,No,No,191.3,1,1,No,Monthly,West,1
+C012,Male,0,Yes,Yes,81,Two year,Bank transfer,41.67,3375.27,DSL,Yes,Yes,No,Yes,Yes,Yes,41.23,0,1,Yes,Quarterly,East,0
+C002,Male,0,No,No,8,Month-to-month,Mailed check,84.97,679.76,Fiber optic,,No,Yes,No,Yes,Yes,221.83,2,1,No,Monthly,North,1
+C002,Male,0,No,No,3,Month-to-month,Mailed check,96.69,290.07,Fiber optic,No,No,Yes,No,Yes,Yes,200.64,5,2,No,Monthly,North,1
+C008,Male,0,Yes,Yes,58,Two year,Bank transfer,34.99,2029.42,DSL,Yes,Yes,No,Yes,Yes,Yes,98.7,0,0,Yes,Quarterly,South,0
+C015,Female,0,Yes,Yes,97,Two year,Bank transfer,45.73,4435.81,DSL,Yes,Yes,No,Yes,Yes,Yes,88.68,0,1,Yes,Quarterly,South,0
+C010,Male,0,Yes,Yes,35,One year,Credit card,64.62,,DSL,Yes,Yes,No,Yes,No,Yes,83.86,0,0,Yes,Monthly,North,0
+C008,Male,0,Yes,Yes,55,Two year,Bank transfer,58.27,3204.85,DSL,Yes,Yes,No,Yes,Yes,Yes,17.64,0,1,Yes,Quarterly,South,0
+C013,Female,0,Yes,No,16,One year,Credit card,64.62,1033.92,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,120.15,1,0,Yes,Monthly,West,0
+C012,Male,0,Yes,Yes,80,Two year,Bank transfer,49.28,3942.4,DSL,Yes,Yes,No,Yes,Yes,Yes,112.1,1,1,Yes,Quarterly,East,0
+C009,Female,1,No,No,7,Month-to-month,Mailed check,93.06,651.42,Fiber optic,No,,Yes,No,No,No,237.09,4,1,No,Monthly,West,1
+C002,Male,0,No,No,1,Month-to-month,Mailed check,95.08,95.08,Fiber optic,No,No,Yes,No,Yes,Yes,238.81,1,3,No,Monthly,North,1
+C015,Female,0,Yes,Yes,99,Two year,Bank transfer,55.81,5525.19,DSL,Yes,Yes,No,Yes,Yes,Yes,32.4,0,0,Yes,Quarterly,South,0
+C005,Female,0,Yes,Yes,71,Two year,Bank transfer,37.95,2694.45,DSL,,Yes,No,Yes,Yes,Yes,62.81,0,0,Yes,Quarterly,West,0
+C003,Female,0,Yes,Yes,44,One year,Credit card,41.84,1840.96,DSL,Yes,Yes,No,Yes,No,Yes,142.94,0,0,Yes,Quarterly,East,0
+C015,Female,0,Yes,Yes,101,Two year,Bank transfer,29.6,2989.6,DSL,Yes,Yes,No,Yes,Yes,Yes,26.96,0,0,Yes,Quarterly,South,1
+C001,Female,0,Yes,No,8,Month-to-month,Electronic check,75.11,600.88,Fiber optic,No,No,Yes,Yes,Yes,No,149.54,2,2,No,Monthly,South,0
+C012,Male,0,Yes,Yes,80,Two year,Bank transfer,46.44,3715.2,DSL,Yes,Yes,No,Yes,Yes,Yes,55.65,2,0,Yes,Quarterly,East,0
+C015,Female,0,Yes,Yes,95,Two year,Bank transfer,39.21,3724.95,DSL,Yes,Yes,No,Yes,Yes,Yes,72.31,2,1,Yes,Quarterly,South,0
+C003,Female,0,Yes,Yes,42,One year,Credit card,57.14,2399.88,DSL,Yes,Yes,No,Yes,No,Yes,32.6,1,0,Yes,Quarterly,East,0
+C003,Female,0,Yes,Yes,53,One year,Credit card,53.86,2854.58,DSL,Yes,Yes,No,Yes,No,Yes,94.4,0,0,Yes,Quarterly,East,0
+C010,Male,0,Yes,Yes,30,One year,Credit card,53.11,,DSL,Yes,Yes,No,Yes,No,Yes,58.88,2,0,Yes,Monthly,North,0
+C003,Female,0,Yes,Yes,53,One year,Credit card,53.86,2854.58,DSL,Yes,Yes,No,Yes,No,Yes,94.4,0,0,Yes,Quarterly,East,0
+C012,Male,0,Yes,Yes,90,Two year,Bank transfer,45.7,4113.0,DSL,Yes,Yes,No,Yes,Yes,Yes,23.74,0,0,Yes,Quarterly,East,0
+C015,Female,0,Yes,Yes,96,Two year,Bank transfer,42.58,,DSL,Yes,Yes,No,Yes,Yes,Yes,80.16,1,0,Yes,Quarterly,South,0
+C010,Male,0,Yes,Yes,35,One year,Credit card,64.62,,DSL,Yes,Yes,No,Yes,No,Yes,83.86,0,0,Yes,Monthly,North,0
+C006,Male,0,Yes,No,24,One year,Credit card,63.01,1512.24,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,245.61,1,0,Yes,Monthly,North,0
+C002,Male,0,No,No,5,Month-to-month,Mailed check,82.93,414.65,Fiber optic,No,No,Yes,No,Yes,Yes,237.79,1,1,No,Monthly,North,1
+C015,Female,0,Yes,Yes,95,Two year,Bank transfer,48.39,4597.05,DSL,Yes,Yes,No,Yes,Yes,Yes,17.29,0,0,Yes,Quarterly,South,0
+C002,Male,0,No,No,1,Month-to-month,Mailed check,88.78,88.78,Fiber optic,No,No,Yes,No,Yes,Yes,240.95,4,3,No,Monthly,North,1
+C015,Female,0,Yes,Yes,96,Two year,Bank transfer,42.58,,DSL,Yes,Yes,No,Yes,Yes,Yes,80.16,1,0,Yes,Quarterly,South,0
+C012,Male,0,Yes,Yes,80,Two year,Bank transfer,49.28,3942.4,DSL,Yes,Yes,No,Yes,Yes,Yes,112.1,1,1,Yes,Quarterly,East,0
+C008,Male,0,Yes,Yes,56,Two year,Bank transfer,63.18,3538.08,DSL,,Yes,No,Yes,Yes,Yes,98.09,0,0,Yes,Quarterly,South,0
+C003,Female,0,Yes,Yes,44,One year,Credit card,41.84,1840.96,DSL,Yes,Yes,No,Yes,No,Yes,142.94,0,0,Yes,Quarterly,East,0
+C007,Female,0,No,No,1,Month-to-month,Electronic check,96.54,,Fiber optic,,No,Yes,No,Yes,No,291.65,4,4,No,Monthly,East,1
+C012,Male,0,Yes,Yes,90,Two year,Bank transfer,45.7,4113.0,DSL,Yes,Yes,No,Yes,Yes,Yes,23.74,0,0,Yes,Quarterly,East,0
+C012,Male,0,Yes,Yes,79,Two year,Bank transfer,46.6,3681.4,DSL,Yes,Yes,No,Yes,Yes,Yes,102.6,2,1,Yes,Quarterly,East,0
+C001,Female,0,Yes,No,18,Month-to-month,Electronic check,64.87,1167.66,Fiber optic,No,No,Yes,Yes,Yes,No,133.03,2,0,No,Monthly,South,1
+C013,Female,0,Yes,No,17,One year,Credit card,55.85,949.45,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,170.13,2,1,Yes,Monthly,West,0
+C005,Female,0,Yes,Yes,78,Two year,Bank transfer,48.97,3819.66,DSL,Yes,Yes,No,Yes,Yes,Yes,54.67,2,0,Yes,Quarterly,West,0
+C008,Male,0,Yes,Yes,61,Two year,Bank transfer,53.59,3268.99,DSL,Yes,Yes,No,Yes,Yes,Yes,90.18,2,0,Yes,Quarterly,South,0
+C015,Female,0,Yes,Yes,95,Two year,Bank transfer,48.39,4597.05,DSL,Yes,Yes,No,Yes,Yes,Yes,17.29,0,0,Yes,Quarterly,South,0
+C003,Female,0,Yes,Yes,45,One year,Credit card,37.79,1700.55,DSL,Yes,Yes,No,Yes,No,Yes,78.27,0,0,Yes,Quarterly,East,0
+C012,Male,0,Yes,Yes,84,Two year,Bank transfer,37.28,3131.52,DSL,Yes,Yes,No,Yes,Yes,Yes,59.68,0,1,Yes,Quarterly,East,0
+C015,Female,0,Yes,Yes,94,Two year,Bank transfer,45.76,4301.44,DSL,Yes,Yes,No,Yes,Yes,Yes,18.28,2,0,Yes,Quarterly,South,0
+C012,Male,0,Yes,Yes,90,Two year,Bank transfer,45.7,4113.0,DSL,Yes,Yes,No,Yes,Yes,Yes,23.74,0,0,Yes,Quarterly,East,0
+C005,Female,0,Yes,Yes,72,Two year,Bank transfer,47.05,3387.6,DSL,Yes,Yes,No,Yes,Yes,Yes,59.9,0,1,Yes,Quarterly,West,0
+C013,Female,0,Yes,No,18,One year,Credit card,71.9,1294.2,Fiber optic,,No,Yes,Yes,Yes,Yes,142.28,2,0,Yes,Monthly,West,0
+C008,Male,0,Yes,Yes,56,Two year,Bank transfer,63.18,3538.08,DSL,,Yes,No,Yes,Yes,Yes,98.09,0,0,Yes,Quarterly,South,0
+C011,Female,0,No,No,1,Month-to-month,Electronic check,106.52,106.52,Fiber optic,No,No,Yes,No,Yes,No,356.63,4,4,No,Monthly,South,1
+C013,Female,0,Yes,No,19,One year,Credit card,71.65,1361.35,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,192.79,2,0,Yes,Monthly,West,0
+C013,Female,0,Yes,No,12,One year,Credit card,65.44,785.28,Fiber optic,,No,Yes,Yes,Yes,Yes,220.8,3,0,Yes,Monthly,West,0
+C006,Male,0,Yes,No,23,One year,Credit card,71.84,1652.32,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,144.13,0,1,Yes,Monthly,North,0
+C001,Female,0,Yes,No,12,Month-to-month,Electronic check,71.29,855.48,Fiber optic,No,No,Yes,Yes,Yes,No,136.29,2,2,No,Monthly,South,1
+C003,Female,0,Yes,Yes,49,One year,Credit card,55.64,2726.36,DSL,Yes,Yes,No,Yes,No,Yes,165.17,2,0,Yes,Quarterly,East,0
+C006,Male,0,Yes,No,25,One year,Credit card,45.38,1134.5,Fiber optic,Yes,,Yes,Yes,Yes,Yes,201.24,2,1,Yes,Monthly,North,0
+C006,Male,0,Yes,No,22,One year,Credit card,61.83,1360.26,Fiber optic,Yes,,Yes,Yes,Yes,Yes,186.52,1,0,Yes,Monthly,North,0
